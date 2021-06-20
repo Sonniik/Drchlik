@@ -37,7 +37,7 @@ function setup() {
 	]
 
 	field = new Field(fieldTeams,teamColors,tileSize,beerIcon);
-	grandpa = new Grandpa(0,0,grandpaIcon,tileSize);
+	grandpa = new Grandpa(5,5,grandpaIcon,tileSize);
 
 	// Create teams
 	for (let i = 0; i < teamCount; i++) {
@@ -52,6 +52,7 @@ function draw() {
 
 function addPoints() {
 	let teamIndex = field.tiles[grandpa.xCoords][grandpa.yCoords].teamIndex;
+	if (teamIndex == -1) return;
 	teams[teamIndex].points++;
 	teams.forEach(team => {team.unavailableBeers = 0});
 }
@@ -61,6 +62,10 @@ function drinkBeer() {
 		if (field.beers[i].xCoords == grandpa.xCoords && field.beers[i].yCoords == grandpa.yCoords) {
 			let [x,y] = [grandpa.xCoords, grandpa.yCoords];
 			let beer = field.deleteBeer(x,y);
+			if ((beer.teamIndex < 0) || (beer.teamIndex > (teams.length-1))) {
+				console.warn('Index out of bounds');
+				return;
+			}
 			teams[beer.teamIndex].unavailableBeers += 1;
 			break;
 		}
