@@ -1,3 +1,5 @@
+const teamCount = 4;
+const maxBeerCount = 6;
 const fieldTeams = [
 	[0,0,1,1,1,2,2,0,0,3,3],
 	[0,1,1,1,2,2,2,2,0,0,3],
@@ -17,6 +19,7 @@ let grandpaIcon;
 let beerIcon;
 let field;
 let grandpa;
+let teams = [];
 
 function preload() {
 	beerIcon = loadImage('assets/beer.svg');
@@ -24,6 +27,7 @@ function preload() {
 }
 
 function setup() {
+	createCanvas(fieldTeams.length*tileSize, fieldTeams.length*tileSize);
 	const teamColors = [
 		color(255, 0, 0),
 		color(191, 239, 255),
@@ -35,7 +39,10 @@ function setup() {
 	field = new Field(fieldTeams,teamColors,tileSize,beerIcon);
 	grandpa = new Grandpa(0,0,grandpaIcon,tileSize);
 
-	createCanvas(fieldTeams.length*tileSize, fieldTeams.length*tileSize);
+	// Create teams
+	for (let i = 0; i < teamCount; i++) {
+		teams.push(new Team(maxBeerCount));
+	}
 }
 
 function draw() {
@@ -47,7 +54,9 @@ function draw() {
 
 	for (let i = 0; i < field.beers.length; i++) {
 		if (field.beers[i].xCoords == grandpa.xCoords && field.beers[i].yCoords == grandpa.yCoords) {
-			field.deleteBeer(field.beers[i].xCoords,field.beers[i].yCoords);
+			let [x,y] = [grandpa.xCoords, grandpa.yCoords];
+			let beer = field.deleteBeer(x,y);
+			teams[beer.teamIndex].unavailableBeers += 1;
 			break;
 		}
 	}

@@ -23,20 +23,20 @@ class Field {
 		this.beers.forEach((beer) => {beer.show()});
 	}
 
-	addBeer(xCoords, yCoords) {
+	addBeer(xCoords, yCoords, teamIndex) {
 		for (let i = 0; i < this.beers.length; i++) {
 			if(this.beers[i].xCoords == xCoords && this.beers[i].yCoords == yCoords) {
 				return;
 			}
 		}
-		this.beers.push(new Beer(xCoords,yCoords, this.beerIcon, this.tileSize));
+		this.beers.push(new Beer(xCoords,yCoords, this.beerIcon, this.tileSize, teamIndex));
 	}
 
 	deleteBeer(xCoords,yCoords) {
 		for (let i = 0; i < this.beers.length; i++) {
 			if (xCoords == this.beers[i].xCoords && yCoords == this.beers[i].yCoords) {
-				this.beers.splice(i,1);
-				return;
+				let beer = this.beers.splice(i,1);
+				return beer[0];
 			}
 		}
 	}
