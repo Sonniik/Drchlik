@@ -9,6 +9,10 @@ class Field {
 		}
 		console.table(this.tiles);
 	}
+	
+	draw(tileSize,colors) {
+		this.tiles.forEach(tiles => tiles.forEach(function(tile) {fill(colors[tile.teamIndex+1]); square((tile.xCoords)*tileSize,(tile.yCoords)*tileSize,tileSize)}))
+	}
 }
 
 class Tile {
