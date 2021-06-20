@@ -14,10 +14,12 @@ const fieldTeams = [
 
 let tileSize = 70;
 let grandpaIcon;
+let beerIcon;
 let field;
 let grandpa;
 
 function preload() {
+	beerIcon = loadImage('assets/beer.svg');
 	grandpaIcon = loadImage('assets/man.svg');
 }
 
@@ -30,15 +32,23 @@ function setup() {
 		color(193, 255, 193)
 	]
 
-	field = new Field(fieldTeams,teamColors);
-	grandpa = new Grandpa(5,5,grandpaIcon,tileSize);
+	field = new Field(fieldTeams,teamColors,tileSize,beerIcon);
+	grandpa = new Grandpa(0,0,grandpaIcon,tileSize);
 
 	createCanvas(fieldTeams.length*tileSize, fieldTeams.length*tileSize);
 }
 
 function draw() {
-	field.show(tileSize);
+	field.show();
 	grandpa.show();
-	grandpa.xCoords=5+round(4*cos(frameCount/100));
-	grandpa.yCoords=5+round(4*sin(frameCount/100));
+
+	if (frameCount%50 == 0)
+		grandpa.move(field.beers);
+
+	for (let i = 0; i < field.beers.length; i++) {
+		if (field.beers[i].xCoords == grandpa.xCoords && field.beers[i].yCoords == grandpa.yCoords) {
+			field.deleteBeer(field.beers[i].xCoords,field.beers[i].yCoords);
+			break;
+		}
+	}
 }
