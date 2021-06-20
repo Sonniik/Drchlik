@@ -48,10 +48,15 @@ function setup() {
 function draw() {
 	field.show();
 	grandpa.show();
+}
 
-	if (frameCount%50 == 0)
-		grandpa.move(field.beers);
+function addPoints() {
+	let teamIndex = field.tiles[grandpa.xCoords][grandpa.yCoords].teamIndex;
+	teams[teamIndex].points++;
+	teams.forEach(team => {team.unavailableBeers = 0});
+}
 
+function drinkBeer() {
 	for (let i = 0; i < field.beers.length; i++) {
 		if (field.beers[i].xCoords == grandpa.xCoords && field.beers[i].yCoords == grandpa.yCoords) {
 			let [x,y] = [grandpa.xCoords, grandpa.yCoords];
