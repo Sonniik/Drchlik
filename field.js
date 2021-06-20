@@ -1,24 +1,33 @@
 class Field {
-	constructor(fieldTeams) {
+	constructor(fieldTeams, teamColors) {
 		this.tiles = new Array(fieldTeams.length);
 		for (let i = 0; i < this.tiles.length; i++) {
 			this.tiles[i] = new Array(fieldTeams[i].length);
 			for (let j = 0; j < this.tiles[i].length; j++) {
-				this.tiles[i][j] = new Tile (i,j,fieldTeams[i][j]);
+				this.tiles[i][j] = new Tile (i,j,fieldTeams[i][j],teamColors[fieldTeams[i][j]+1]);
 			}
 		}
-		console.table(this.tiles);
 	}
 	
-	draw(tileSize,colors) {
-		this.tiles.forEach(tiles => tiles.forEach(function(tile) {fill(colors[tile.teamIndex+1]); square((tile.xCoords)*tileSize,(tile.yCoords)*tileSize,tileSize)}))
+	draw(tileSize) {
+		this.tiles.forEach(
+			tiles => tiles.forEach(function(tile) {
+				tile.draw(tileSize);
+			}
+		));
 	}
 }
 
 class Tile {
-	constructor(xCoords, yCoords, teamIndex) {
+	constructor(xCoords, yCoords, teamIndex, color) {
 		this.xCoords = xCoords;
 		this.yCoords = yCoords;
 		this.teamIndex = teamIndex;
+		this.color = color;
+	}
+
+	draw(tileSize) {
+		fill(this.color);
+		square((this.xCoords)*tileSize,(this.yCoords)*tileSize,tileSize);
 	}
 }
