@@ -9,10 +9,10 @@ class Field {
 		}
 	}
 	
-	draw(tileSize) {
+	show(tileSize) {
 		this.tiles.forEach(
 			tiles => tiles.forEach(function(tile) {
-				tile.draw(tileSize);
+				tile.show(tileSize);
 			}
 		));
 	}
@@ -26,7 +26,7 @@ class Tile {
 		this.color = color;
 	}
 
-	draw(tileSize) {
+	show(tileSize) {
 		fill(this.color);
 		square((this.xCoords)*tileSize,(this.yCoords)*tileSize,tileSize);
 	}
