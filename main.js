@@ -27,7 +27,8 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(fieldTeams.length*tileSize, fieldTeams.length*tileSize);
+	createCanvas(fieldTeams.length*tileSize, fieldTeams.length*tileSize)
+		.parent(document.getElementById('board'));
 	const teamColors = [
 		color(255, 0, 0),
 		color(191, 239, 255),
@@ -67,6 +68,7 @@ function drinkBeer() {
 				return;
 			}
 			teams[beer.teamIndex].unavailableBeers += 1;
+			teams[beer.teamIndex].usedBeers -= 1;
 			break;
 		}
 	}

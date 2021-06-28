@@ -10,7 +10,7 @@ class Field {
 
 		this.tileSize = tileSize;
 		this.beerIcon = beerIcon;
-		this.beers = []
+		this.beers = [];
 	}
 	
 	show(tileSize) {
@@ -40,6 +40,16 @@ class Field {
 				return beer[0];
 			}
 		}
+		return null;
+	}
+
+	getBeer(xCoords,yCoords) {
+		for (let i = 0; i < this.beers.length; i++) {
+			if (xCoords == this.beers[i].xCoords && yCoords == this.beers[i].yCoords) {
+				return this.beers[i];
+			}
+		}
+		return null;
 	}
 }
 

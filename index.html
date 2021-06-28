@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
 	<link rel="icon" type="image/svg" href="assets/man.svg"/>
 	<script src="p5.min.js"></script>
 	<script src="fieldObject.js"></script>
@@ -25,13 +26,24 @@
 </head>
 
 <body>
-	<form >
-		<input type="text" id="command_input" value="">
-		<button onclick="executeInput();return false">Submit</button>
-	</form>
-	
-	<div id="teamstats" style="width:20%"></div>
-	<div id="timers" style="width:20%"></div>
+	<div id="container">
+		<div>
+			<div id="systemMessages">
+				
+			</div>
+			<form action="#" onsubmit="executeInput();return false">
+				<input type="text" id="command_input" value="">
+			</form>
+		</div>
+		<div id="board">
+			
+		</div>
+		<div id="teams">
+			
+		</div>
+		<div id="teamstats"></div>
+		<div id="timers"></div>
+	</div>
 </body>
 
 </html>

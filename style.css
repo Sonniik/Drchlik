@@ -1,0 +1,7 @@
+#container {
+	display: flex;
+}
+
+div,form {
+	flex: 30%;
+}
