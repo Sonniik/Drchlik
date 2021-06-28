@@ -9,3 +9,7 @@ function updateUI() {
 	let timersText = "Next move in: " + moveTimer + "<br/>Next round in: " + roundTimer;
 	document.getElementById("timers").innerHTML = timersText;
 }
+
+function executeInput() {
+    console.log(document.getElementById("command_input").value)
+}
