@@ -44,6 +44,8 @@ function setup() {
 	for (let i = 0; i < teamCount; i++) {
 		teams.push(new Team(maxBeerCount));
 	}
+
+	initUI();
 }
 
 function draw() {

@@ -1,7 +1,42 @@
+body {
+	color: #afafaf;
+}
+
 #container {
 	display: flex;
 }
 
 div,form {
 	flex: 30%;
+}
+
+.team {
+	border-style: solid;
+	border-color: green;
+	margin: 5px;
+	padding: 5px;
+}
+
+.teamName, .teamPoints {
+	margin: 5px;
+	padding: 5px;
+}
+
+.teamPoints {
+	text-align: right;
+	vertical-align: middle;
+}
+
+.teamHeader, .teamBeersContainer {
+	display: flex;
+}
+
+.teamBeers {
+	margin: 5px;
+	padding: 5px;
+	flex: 50%;
+	text-align: center;
+	vertical-align: middle;
+	border-style: solid;
+	border-color: red;
 }
