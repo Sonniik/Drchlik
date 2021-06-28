@@ -26,10 +26,11 @@ class Field {
 	addBeer(xCoords, yCoords, teamIndex) {
 		for (let i = 0; i < this.beers.length; i++) {
 			if(this.beers[i].xCoords == xCoords && this.beers[i].yCoords == yCoords) {
-				return;
+				return false;
 			}
 		}
 		this.beers.push(new Beer(xCoords,yCoords, this.beerIcon, this.tileSize, teamIndex));
+        return true;
 	}
 
 	deleteBeer(xCoords,yCoords) {

@@ -31,7 +31,12 @@ function executeInput() {
     };
     switch (commandIinput.slice(-1)) {
         case '+':
-            console.log('+');
+            if (field.addBeer(inputXCoords,inputYCoords,inputTeamIndex) == true) {
+                console.log('beer added');
+                teams[inputTeamIndex].usedBeers++;
+                return;
+            };
+            console.warn('You cannot place a beer here')
             break;
         case '-':
             console.log('-');
