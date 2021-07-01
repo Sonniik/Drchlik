@@ -69,12 +69,12 @@ fieldset > legend {
 .teamHeader {
 	border: var(--main-border);
 	border-radius: 5px;
-	margin: 5px auto 5px auto;
-	width: 90%;
 }
 
 .teamHeader, .teamBeersContainer {
 	display: flex;
+	width: 90%;
+	margin: 5px auto 2px auto;
 }
 
 .teamBeers {

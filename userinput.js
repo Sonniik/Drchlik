@@ -3,6 +3,19 @@ function executeInput() {
 	let commanField = document.getElementById("command_input");
 	let commandInput = commanField.value;
 	commanField.value = '';
+
+	// parse start/stop commands
+	if (commandInput.toLowerCase() == "start") {
+		runFlag = true;
+		ui.log("Hra spuštěna");
+		return;
+	}
+	if (commandInput.toLowerCase() == "stop") {
+		runFlag = false;
+		ui.log("Hra zastavena");
+		return;
+	}
+
 	if (commandInput.length != 4) {
 		ui.error('Neplatný příkaz');
 		return;

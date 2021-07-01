@@ -7,7 +7,11 @@ let roundTimerCounter = 0;
 
 let roundCounter = 1;
 
+let runFlag = false;
+
 function incrementCounters() {
+	if (runFlag == false) return;
+
 	moveTimerCounter = (moveTimerCounter+1) % moveTimerLength;
 	roundTimerCounter = (roundTimerCounter+1) % roundTimerLength;
 	
