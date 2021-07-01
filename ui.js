@@ -1,8 +1,8 @@
 class UI {
-	constructor(teams) {
-		teams.forEach(team => {
-			this.generateTeamDiv(team);
-		});
+	constructor(teams, teamColors) {
+		for (let i = 0; i < teams.length; i++) {
+			this.generateTeamDiv(teams[i], teamColors[i+1]);
+		}
 		this.messagesContainer = document.getElementById("messagesContainer");
 	}
 
@@ -18,18 +18,22 @@ class UI {
 		document.getElementById("timers").innerHTML = timersText;
 	}
 
-	generateTeamDiv(team) {
+	generateTeamDiv(team, teamColor) {
 		let container = createDiv();
 		container.class("team");
 		container.parent(document.getElementById("teamsContainer"));
 		let teamHeader = createDiv().class("teamHeader").parent(container);
 		let teamBeersContainer = createDiv().class("teamBeersContainer").parent(container);
 
-		createDiv().parent(teamHeader).class("teamName").html("Tým "+(teams.indexOf(team)+1));
+		createDiv().parent(teamHeader).class("teamName").html("Tým "+(teams.indexOf(team)+1)).style("background-color:"+teamColor);
 		createDiv().parent(teamHeader).class("teamPoints").html(team.points);
 
-		createDiv().parent(teamBeersContainer).class("teamBeers availableBeers").html(team.availableBeers);
-		createDiv().parent(teamBeersContainer).class("teamBeers unavailableBeers").html(team.unavailableBeers);
+		let availableBeersElement = createDiv([team.availableBeers]);
+		let unavailableBeersElement = createDiv([team.unavailableBeers]);
+		availableBeersElement.parent(createElement('fieldset').parent(teamBeersContainer).class("teamBeers")
+			.child(createElement('legend').html("Volná piva")));
+		unavailableBeersElement.parent(createElement('fieldset').parent(teamBeersContainer).class("teamBeers")
+			.child(createElement('legend').html("Nedostupná piva")));
 	}
 
 	log(message) {

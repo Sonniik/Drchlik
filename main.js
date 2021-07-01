@@ -46,7 +46,7 @@ function setup() {
 		teams.push(new Team(maxBeerCount));
 	}
 
-	ui = new UI(teams);
+	ui = new UI(teams, teamColors);
 	
 	// just for testing
 }
