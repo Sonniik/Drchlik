@@ -1,23 +1,25 @@
-let moveDelayLength = 10;
-let roundLength = 20;
+let moveTimerLength = 10;
+let roundTimerLength = 20;
 
-let moveCounter = 0;
-let roundTimeCounter = 0;
+// dodělat přepsání variables na timer
+let moveTimerCounter = 0;
+let roundTimerCounter = 0;
+
 let roundCounter = 1;
 
 function incrementCounters() {
-	moveCounter = (moveCounter+1) % moveDelayLength;
-	roundTimeCounter = (roundTimeCounter+1) % roundLength;
+	moveTimerCounter = (moveTimerCounter+1) % moveTimerLength;
+	roundTimerCounter = (roundTimerCounter+1) % roundTimerLength;
 	
-	if (moveCounter == 0){
+	if (moveTimerCounter == 0){
 		grandpa.move(field.beers, teams);
 		drinkBeer();
 	}
-	if (roundTimeCounter == 0) {
+	if (roundTimerCounter == 0) {
 		roundCounter++;
 		addPoints();
 	}
-	//ui.-updateUI();
+	ui.updateUI();
 }
 
 window.setInterval(incrementCounters,1000);

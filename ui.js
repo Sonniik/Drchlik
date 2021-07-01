@@ -4,18 +4,11 @@ class UI {
 			this.generateTeamDiv(teams[i], teamColors[i+1]);
 		}
 		this.messagesContainer = document.getElementById("messagesContainer");
-	}
+		this.moveTimerElement = document.getElementById("moveTimer");
+		this.roundTimerElement = document.getElementById("roundTimer");
+		this.roundCounterElement = document.getElementById("roundCounter");
 
-	updateUI() {
-		let text = ""
-		teams.forEach(team => text += ("Tým "+(teams.indexOf(team)+1)+" <br/> Points: " + team.points +
-		"<br/>Available beers: " + team.availableBeers + "<br/>Used beers: " + team.usedBeers + "<br/>Drunk beers: " + team.unavailableBeers + "<br/>"));
-		document.getElementById("teamstats").innerHTML = text;
-		
-		let moveTimer = moveDelayLength - moveCounter;
-		let roundTimer = roundLength - roundTimeCounter;
-		let timersText = "Next move in: " + moveTimer + "<br/>Next round in: " + roundTimer;
-		document.getElementById("timers").innerHTML = timersText;
+		this.updateUI();
 	}
 
 	generateTeamDiv(team, teamColor) {
@@ -28,12 +21,24 @@ class UI {
 		createDiv().parent(teamHeader).class("teamName").html("Tým "+(teams.indexOf(team)+1)).style("background-color:"+teamColor);
 		createDiv().parent(teamHeader).class("teamPoints").html(team.points);
 
-		let availableBeersElement = createDiv([team.availableBeers]);
-		let unavailableBeersElement = createDiv([team.unavailableBeers]);
+		//let availableBeersElement = createDiv([team.availableBeers]);
+		//let unavailableBeersElement = createDiv([team.unavailableBeers]);
+		let availableBeersElement = createDiv();
+		let unavailableBeersElement = createDiv();
 		availableBeersElement.parent(createElement('fieldset').parent(teamBeersContainer).class("teamBeers")
 			.child(createElement('legend').html("Volná piva")));
 		unavailableBeersElement.parent(createElement('fieldset').parent(teamBeersContainer).class("teamBeers")
 			.child(createElement('legend').html("Nedostupná piva")));
+		team.availableBeersElement = availableBeersElement;
+		team.unavailableBeersElement = unavailableBeersElement;
+		team.updateStats();
+	}
+
+	updateUI() {
+		teams.forEach(team => team.updateStats());
+		this.moveTimerElement.innerHTML = moveTimerLength-moveTimerCounter;
+		this.roundTimerElement.innerHTML = roundTimerLength-roundTimerCounter;
+		this.roundCounterElement.innerHTML = roundCounter;
 	}
 
 	log(message) {
