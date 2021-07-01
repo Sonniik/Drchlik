@@ -11,10 +11,12 @@ body {
 
 #wrapper {
 	display: flex;
+	margin-top: 30px;
+	justify-content: center;
 }
 
 .column {
-	flex: 30%;
+	flex: 33%;
 }
 
 /* --- Center ---*/
@@ -23,6 +25,25 @@ body {
 }
 
 /* --- Right column --- */
+
+fieldset > legend {
+	font-size: 15px;
+}
+
+/* -- Counters --*/
+.counters {
+	display: flex;
+}
+
+.counter {
+	flex: 33%;
+	border: var(--main-border);
+	border-radius: 5px;
+	text-align: center;
+	margin: 5px;
+}
+
+/* -- Teams -- */
 #teamsContainer {
 	display: flex;
 	flex-direction: column;
@@ -41,14 +62,15 @@ body {
 	width: 50%;
 }
 
-.teamName {
-	border: var(--main-border);
-	border-radius: 5px;
-}
-
 .teamPoints {
 	text-align: right;
 	vertical-align: middle;
+}
+.teamHeader {
+	border: var(--main-border);
+	border-radius: 5px;
+	margin: 5px auto 5px auto;
+	width: 90%;
 }
 
 .teamHeader, .teamBeersContainer {
@@ -65,10 +87,6 @@ body {
 	vertical-align: middle;
 	border: var(--main-border);
 	border-radius: 5px;
-}
-
-fieldset > legend {
-	font-size: 15px;
 }
 
 /* --- Left column --- */

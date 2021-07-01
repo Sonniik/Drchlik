@@ -4,8 +4,10 @@ class Team {
 		this.points = 0;
 		this.usedBeers = 0;
 		this.unavailableBeers = 0;
+
 		this.availableBeersElement;
 		this.unavailableBeersElement;
+		this.pointsElement;
 	}
 
 	get availableBeers() {
@@ -15,5 +17,6 @@ class Team {
 	updateStats() {
 		this.availableBeersElement.html(this.availableBeers);
 		this.unavailableBeersElement.html(this.unavailableBeers);
+		this.pointsElement.html(this.points);
 	}
 }

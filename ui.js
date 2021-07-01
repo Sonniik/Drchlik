@@ -15,11 +15,11 @@ class UI {
 		let container = createDiv();
 		container.class("team");
 		container.parent(document.getElementById("teamsContainer"));
-		let teamHeader = createDiv().class("teamHeader").parent(container);
+		let teamHeader = createDiv().class("teamHeader").parent(container).style("background-color:"+teamColor);
 		let teamBeersContainer = createDiv().class("teamBeersContainer").parent(container);
 
-		createDiv().parent(teamHeader).class("teamName").html("Tým "+(teams.indexOf(team)+1)).style("background-color:"+teamColor);
-		createDiv().parent(teamHeader).class("teamPoints").html(team.points);
+		createDiv().parent(teamHeader).class("teamName").html("Tým "+(teams.indexOf(team)+1));
+		team.pointsElement = createDiv().parent(teamHeader).class("teamPoints").html(team.points);
 
 		//let availableBeersElement = createDiv([team.availableBeers]);
 		//let unavailableBeersElement = createDiv([team.unavailableBeers]);
