@@ -17,7 +17,7 @@ function incrementCounters() {
 		roundCounter++;
 		addPoints();
 	}
-	//updateUI();
+	//ui.updateUI();
 }
 
 window.setInterval(incrementCounters,1000);

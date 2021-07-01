@@ -14,11 +14,12 @@ const fieldTeams = [
 	[1,1,2,2,0,0,3,3,3,2,2]
 ]
 
-let tileSize = 70;
+let tileSize = 80;
 let grandpaIcon;
 let beerIcon;
 let field;
 let grandpa;
+let ui;
 let teams = [];
 
 function preload() {
@@ -45,7 +46,9 @@ function setup() {
 		teams.push(new Team(maxBeerCount));
 	}
 
-	initUI();
+	ui = new UI(teams);
+	
+	// just for testing
 }
 
 function draw() {

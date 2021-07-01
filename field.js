@@ -63,6 +63,8 @@ class Tile {
 
 	show(tileSize) {
 		fill(this.color);
+		stroke('#222222');
+		strokeWeight(4);
 		square((this.xCoords)*tileSize,(this.yCoords)*tileSize,tileSize);
 	}
 }

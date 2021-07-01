@@ -1,17 +1,36 @@
 body {
-	color: #afafaf;
+	background-color: #eeeeee;
+	color: #222222;
+
+	--font-size: 25px;
+	font-size: var(--font-size);
+	font-family: Helvetica, Arial, sans-serif;
+
+	--main-border: 3px solid #222222;
 }
 
-#container {
+#wrapper {
 	display: flex;
 }
 
-div,form {
+.column {
 	flex: 30%;
 }
 
+/* --- Center ---*/
+#board {
+	margin: 10px;
+}
+
+/* --- Right column --- */
+#teamsContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
 .team {
-	border-style: solid;
+	border: var(--main-border);
+	border-radius: 5px;
 	border-color: green;
 	margin: 5px;
 	padding: 5px;
@@ -20,6 +39,7 @@ div,form {
 .teamName, .teamPoints {
 	margin: 5px;
 	padding: 5px;
+	width: 50%;
 }
 
 .teamPoints {
@@ -37,6 +57,60 @@ div,form {
 	flex: 50%;
 	text-align: center;
 	vertical-align: middle;
-	border-style: solid;
+	border: var(--main-border);
 	border-color: red;
+	border-radius: 5px;
+}
+
+/* --- Left column --- */
+
+/* -- Messages field -- */
+#messagesContainer {
+	margin: 5px;
+	padding: 10px;
+	height: 780px;
+
+	border: var(--main-border);
+	border-radius: 5px;
+
+	display: -webkit-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	/*flex-wrap: wrap;*/
+	overflow: hidden;
+}
+
+.message {
+	margin: 5px;
+	padding: 5px;
+	border: var(--main-border);
+	border-radius: 5px;
+	/*overflow: hidden;*/
+}
+
+.log {
+	border-color: green;
+}
+
+.warn {
+	border-color: yellow;
+}
+
+.error {
+	border-color: red;
+}
+
+/* -- User input -- */
+form > input {
+	display: block;
+	margin: auto;
+	width: 80%;
+	padding: 10px;
+	border: var(--main-border);
+	border-radius: 5px;
+	background: none;
+	box-sizing: border-box;
+	outline: none;
+	font-size: var(--font-size);
 }

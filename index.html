@@ -17,32 +17,19 @@
 	<script src="ui.js"></script>
 	<script src="main.js"></script>
 	<title>Drchlík test</title>
-	<style>
-	body {
-		padding: 0;
-		margin: 0;
-		background-color: #222222;
-	}
-	</style>
 </head>
 
 <body>
-	<div id="container">
-		<div>
-			<div id="systemMessages">
-				
-			</div>
+	<div id="wrapper">
+		<div class="column">
+			<div id="messagesContainer"></div>
 			<form action="#" onsubmit="executeInput();return false">
 				<input type="text" id="command_input" value="">
 			</form>
 		</div>
-		<div id="board"></div>
-		<div id="teamsContainer">
-			
-		</div>
+		<div class="column" id="board"></div>
+		<div class="column" id="teamsContainer"></div>
 	</div>
-	<div id="teamstats"></div>
-	<div id="timers"></div>
 </body>
 
 </html>

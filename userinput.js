@@ -1,6 +1,8 @@
 function executeInput() {
 	// validate command length
-	let commandInput = document.getElementById("command_input").value;
+	let commanField = document.getElementById("command_input");
+	let commandInput = commanField.value;
+	commanField.value = '';
 	if (commandInput.length != 4) {
 		console.warn('Invalid input length');
 		return;
