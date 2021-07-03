@@ -3,4 +3,12 @@ class Beer extends FieldObject {
 		super(xCoords,yCoords,icon,size);
 		this.teamIndex = teamIndex;
 	}
+
+	show() {
+		super.show();
+		rectMode(CENTER);
+		stroke(teamColors[this.teamIndex+1]);
+		noFill();
+		square((this.xCoords+0.5)*this.tileSize, (this.yCoords+0.5)*this.tileSize, 0.95*this.tileSize);
+	}
 }

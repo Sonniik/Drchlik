@@ -14,13 +14,14 @@ const fieldTeams = [
 	[1,1,2,2,0,0,3,3,3,2,2]
 ]
 
-let tileSize = 76;
+let tileSize = 70;
 let grandpaIcon;
 let beerIcon;
 let field;
 let grandpa;
 let ui;
 let teams = [];
+let teamColors = [];
 
 function preload() {
 	beerIcon = loadImage('assets/beer.svg');
@@ -30,7 +31,7 @@ function preload() {
 function setup() {
 	createCanvas(fieldTeams.length*tileSize, fieldTeams.length*tileSize)
 		.parent(document.getElementById('board'));
-	const teamColors = [
+	teamColors = [
 		color(255, 0, 0),
 		color(191, 239, 255),
 		color(255, 192, 203),

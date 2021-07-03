@@ -62,6 +62,7 @@ class Tile {
 	}
 
 	show(tileSize) {
+		rectMode(CORNER);
 		fill(this.color);
 		stroke('#222222');
 		strokeWeight(4);
