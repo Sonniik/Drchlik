@@ -23,7 +23,9 @@ class Field {
 
 		// draw beers
 		this.beers.forEach((beer) => {beer.show()});
+	}
 
+	showCoords() {
 		// draw coords
 		textSize(this.tileSize*0.45);
 		rectMode(CORNER);

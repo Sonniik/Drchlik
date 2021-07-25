@@ -53,6 +53,7 @@ function setup() {
 function draw() {
 	field.show();
 	grandpa.show();
+	field.showCoords();
 }
 
 function addPoints() {
