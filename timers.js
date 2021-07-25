@@ -26,4 +26,16 @@ function incrementCounters() {
 	ui.updateUI();
 }
 
-window.setInterval(incrementCounters,1000);
+//window.setInterval(incrementCounters,1000);
+
+let interval = 1000; // ms
+let expected = Date.now() + interval;
+setTimeout(step, interval);
+function step() {
+	let delta = Date.now() - expected; // the drift (positive for overshooting)
+	
+	incrementCounters();
+
+	expected += interval;
+	setTimeout(step, Math.max(0, interval - delta)); // take into account drift
+}
