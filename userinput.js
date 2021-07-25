@@ -10,6 +10,12 @@ function executeInput() {
 		ui.log("Hra spuštěna");
 		return;
 	}
+
+	if (runFlag == false) {
+		ui.warn("Hra pozastavena, příkaz ignorován");
+		return;
+	}
+
 	if (commandInput.toLowerCase() == "stop") {
 		runFlag = false;
 		ui.log("Hra zastavena");
