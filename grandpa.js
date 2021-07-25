@@ -1,7 +1,9 @@
 class Grandpa extends FieldObject {
+
 	calcPowDistance (xTarget, yTarget) {
 		return (xTarget-this.xCoords)**2 + (yTarget-this.yCoords)**2
 	}
+
 	move(beers) {
 		if (beers.length == 0) return;
 		let closest = beers[0];
@@ -21,4 +23,5 @@ class Grandpa extends FieldObject {
 			this.xCoords += Math.sign(xDiff);
 		}
 	}
+
 }

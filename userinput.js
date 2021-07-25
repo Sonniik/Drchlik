@@ -53,7 +53,7 @@ function executeInput() {
 				teams[inputTeamIndex].usedBeers++;
 				break;
 			}
-			ui.warn('Na poli '+printCoords(inputXCoords,inputYCoords)+' již pivo leží.')
+			ui.warn('Týme ' + (inputTeamIndex+1) + ': Na poli '+printCoords(inputXCoords,inputYCoords)+' již pivo leží.')
 			break;
 
 		case '-': // remove beer from field
@@ -61,13 +61,13 @@ function executeInput() {
 
 			// check if tile has a beer
 			if (beer == null) {
-				ui.warn('Nelze odstranit pivo z pole '+printCoords(inputXCoords,inputYCoords)+'. Žádné zde není.');
+				ui.warn('Týme ' + (inputTeamIndex+1) + ': Nelze odstranit pivo z pole '+printCoords(inputXCoords,inputYCoords)+'. Žádné zde není.');
 				break;
 			}
 
 			// do not delete your own beer
 			if (beer.teamIndex == inputTeamIndex) {
-				ui.warn('Tým ' + (inputTeamIndex+1) + ': Nelze odstranit své vlastní pivo.');
+				ui.warn('Týme ' + (inputTeamIndex+1) + ': Nelze odstranit své vlastní pivo.');
 				break;
 			}
 

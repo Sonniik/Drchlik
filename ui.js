@@ -50,4 +50,8 @@ class UI {
 	error(message) {
 		createDiv().parent(this.messagesContainer).class("message error").html(message);
 	}
+
+	get lastmessage() {
+		return this.messagesContainer.lastChild.innerHTML;
+	}
 }
