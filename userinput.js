@@ -35,9 +35,12 @@ function executeInput() {
 	}
 
 	// validate inputed coordinates
-	let inputXCoords = parseCoords(commandInput.slice(1,2));
-	let inputYCoords = parseCoords(commandInput.slice(2,3));
-	if (isNaN(inputXCoords) || isNaN(inputYCoords)) {
+	let inputXCoords = parseInt(commandInput.slice(1,2).toLowerCase(),16);
+	let inputYCoords = parseInt(commandInput.slice(2,3).toLowerCase(),16);
+
+	if (isNaN(inputXCoords) || isNaN(inputYCoords)
+		|| inputXCoords < 0 || inputXCoords >= field.tiles.length
+		|| inputYCoords < 0 || inputYCoords >= field.tiles.length) {
 		ui.error('Neplatné hodnoty souřadnic');
 		return;
 	}
@@ -46,7 +49,7 @@ function executeInput() {
 	switch (commandInput.slice(-1)) {
 		case '+': // add beer to field
 			if (field.addBeer(inputXCoords,inputYCoords,inputTeamIndex) == true) {
-				ui.log('Tým ' + (inputTeamIndex+1) + ' položil pivo na poli ' + printCoords(inputXCoords,inputYCoords));
+				ui.log('Tým ' + (inputTeamIndex+1) + ' položil pivo na poli ' + printCoords(inputXCoords,inputYCoords)+'.');
 				teams[inputTeamIndex].usedBeers++;
 				break;
 			}
@@ -58,7 +61,7 @@ function executeInput() {
 
 			// check if tile has a beer
 			if (beer == null) {
-				ui.warn('Nelze oddělat pivo z pole '+printCoords(inputXCoords,inputYCoords)+'. Žádné zde není.');
+				ui.warn('Nelze odstranit pivo z pole '+printCoords(inputXCoords,inputYCoords)+'. Žádné zde není.');
 				break;
 			}
 
@@ -69,22 +72,15 @@ function executeInput() {
 			}
 
 			teams[beer.teamIndex].usedBeers -= 1; // subtract from used beers
-			field.deleteBeer(inputXCoords,inputYCoords); // remove beer from field
-			ui.log('Pivo odebráno z pole '+printCoords(inputXCoords,inputYCoords)+' týmem '+(inputTeamIndex+1)+'.');
+			deletedBeer = field.deleteBeer(inputXCoords,inputYCoords); // remove beer from field
+			ui.log('Pivo týmu '+(deletedBeer.teamIndex+1)+' odebráno z pole '+
+				printCoords(inputXCoords,inputYCoords)+' týmem '+(inputTeamIndex+1)+'.');
 			break;
 
 		default: // not a valid action
 			ui.warn('Neplatný příkaz');
 			break;
 	}
-}
-
-function parseCoords(coords) {
-    if (coords.toLowerCase() == 'a') {
-        return 10;
-    } else {
-        return parseInt(coords);
-    }
 }
 
 function printCoords(xCoords, yCoords) {

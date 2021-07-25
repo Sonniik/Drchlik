@@ -14,13 +14,17 @@ class Field {
 	}
 	
 	show(tileSize) {
+		// draw tiles
 		for (let i = 0; i < this.tiles.length; i++) {
 			for (let j = 0; j < this.tiles[i].length; j++) {
 				this.tiles[i][j].show(this.tileSize);
 			}
 		}
 
+		// draw beers
 		this.beers.forEach((beer) => {beer.show()});
+
+		// draw coords
 		textSize(this.tileSize*0.45);
 		rectMode(CORNER);
 		fill(34,34,34);

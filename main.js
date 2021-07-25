@@ -48,8 +48,6 @@ function setup() {
 	}
 
 	ui = new UI(teams, teamColors);
-	
-	// just for testing
 }
 
 function draw() {
