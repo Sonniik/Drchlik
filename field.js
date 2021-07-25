@@ -21,6 +21,18 @@ class Field {
 		}
 
 		this.beers.forEach((beer) => {beer.show()});
+		textSize(this.tileSize*0.45);
+		rectMode(CORNER);
+		fill(34,34,34);
+		noStroke();
+		for (let i = 0; i < this.tiles.length; i++) {
+			textAlign(LEFT,BOTTOM);
+			text(i.toString(16).toUpperCase(),(i+0.03)*this.tileSize,(this.tiles.length-1+0.05)*this.tileSize,
+				this.tileSize,this.tileSize);
+			textAlign(RIGHT,TOP);
+			text(i.toString(16).toUpperCase(),(this.tiles.length-1)*this.tileSize,(i+0.03)*this.tileSize,
+				1.1*this.tileSize,this.tileSize);
+		}
 	}
 
 	addBeer(xCoords, yCoords, teamIndex) {
