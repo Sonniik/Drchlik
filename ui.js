@@ -18,7 +18,7 @@ class UI {
 		let teamHeader = createDiv().class("teamHeader").parent(container).style("background-color:"+teamColor);
 		let teamBeersContainer = createDiv().class("teamBeersContainer").parent(container);
 
-		createDiv().parent(teamHeader).class("teamName").html("Tým "+(teams.indexOf(team)+1));
+		createDiv().parent(teamHeader).class("teamName").html("Tým "+(teams.indexOf(team)+1)+" - "+(teamNames[teams.indexOf(team)]));
 		team.pointsElement = createDiv().parent(teamHeader).class("teamPoints").html(team.points);
 
 		//let availableBeersElement = createDiv([team.availableBeers]);
@@ -36,8 +36,8 @@ class UI {
 
 	updateUI() {
 		teams.forEach(team => team.updateStats());
-		this.moveTimerElement.innerHTML = moveTimerLength-moveTimerCounter;
-		this.roundTimerElement.innerHTML = moveTimerLength*roundTimerMult-roundTimerCounter;
+		this.moveTimerElement.innerHTML = this.secToMin(moveTimerLength-moveTimerCounter);
+		this.roundTimerElement.innerHTML = this.secToMin(moveTimerLength*roundTimerMult-roundTimerCounter);
 		this.roundCounterElement.innerHTML = roundCounter;
 	}
 
@@ -53,5 +53,12 @@ class UI {
 
 	get lastmessage() {
 		return this.messagesContainer.lastChild.innerHTML;
+	}
+
+	secToMin(sec) {
+		return floor(sec/60) + ":" + (sec%60).toLocaleString("cs-CZ",{
+			minimumIntegerDigits: 2,
+			useGrouping: false
+		});
 	}
 }

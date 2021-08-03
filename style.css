@@ -59,7 +59,14 @@ fieldset > legend {
 .teamName, .teamPoints {
 	margin: 5px;
 	padding: 5px;
-	width: 50%;
+}
+
+.teamName {
+	width: 70%;
+}
+
+.teamPoints {
+	width: 30%;
 }
 
 .teamPoints {
