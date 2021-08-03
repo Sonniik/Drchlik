@@ -37,7 +37,7 @@ class UI {
 	updateUI() {
 		teams.forEach(team => team.updateStats());
 		this.moveTimerElement.innerHTML = moveTimerLength-moveTimerCounter;
-		this.roundTimerElement.innerHTML = roundTimerLength-roundTimerCounter;
+		this.roundTimerElement.innerHTML = moveTimerLength*roundTimerMult-roundTimerCounter;
 		this.roundCounterElement.innerHTML = roundCounter;
 	}
 

@@ -1,5 +1,5 @@
-let moveTimerLength = 10;
-let roundTimerLength = 20;
+let moveTimerLength = 60;
+let roundTimerMult = 3;
 
 // dodělat přepsání variables na timer
 let moveTimerCounter = 0;
@@ -13,7 +13,7 @@ function incrementCounters() {
 	if (runFlag == false) return;
 
 	moveTimerCounter = (moveTimerCounter+1) % moveTimerLength;
-	roundTimerCounter = (roundTimerCounter+1) % roundTimerLength;
+	roundTimerCounter = (roundTimerCounter+1) % (moveTimerLength * roundTimerMult);
 	
 	if (moveTimerCounter == 0){
 		grandpa.move(field.beers, teams);

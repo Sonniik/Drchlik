@@ -14,7 +14,7 @@ const fieldTeams = [
 	[1,1,2,2,0,0,3,3,3,2,2]
 ]
 
-let tileSize = 70;
+let tileSize = 75;
 let grandpaIcon;
 let beerIcon;
 let field;
