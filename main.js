@@ -15,10 +15,10 @@ const fieldTeams = [
 ]
 
 const teamNames = [
-	"Amaronauti",
 	"Akošov",
+	"Šakali",
 	"Odborníci",
-	"Šakali"
+	"Amaronauti"
 ];
 
 let tileSize = 75;
@@ -40,10 +40,19 @@ function setup() {
 		.parent(document.getElementById('board'));
 	teamColors = [
 		color(255, 0, 0),
-		color(191, 239, 255),
+//		color(220, 245, 200),
+//		color(254, 209, 212),
+//		color(216, 230, 254),
+//		color(248, 208, 243)
+		color(193, 255, 193),
 		color(255, 192, 203),
-		color(255, 246, 143),
-		color(193, 255, 193)
+		color(191, 239, 255),
+		color(255, 246, 143)
+//		color(183, 179, 202)
+// Amar - fialová
+// Ako -- zelená
+// Šak -- červená
+// Odb -- modrá
 	]
 
 	field = new Field(fieldTeams,teamColors,tileSize,beerIcon);

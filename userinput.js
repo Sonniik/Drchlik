@@ -48,12 +48,17 @@ function executeInput() {
 	// validate and perform valid action
 	switch (commandInput.slice(-1)) {
 		case '+': // add beer to field
-			if (field.addBeer(inputXCoords,inputYCoords,inputTeamIndex) == true) {
-				ui.log('Tým ' + (inputTeamIndex+1) + ' položil pivo na poli ' + printCoords(inputXCoords,inputYCoords)+'.');
-				teams[inputTeamIndex].usedBeers++;
+			if (inputXCoords == grandpa.xCoords && inputYCoords == grandpa.yCoords) {
+				ui.warn('Týme ' + (inputTeamIndex+1) + ': Na poli '+printCoords(inputXCoords,inputYCoords)+' stojí děda Drchlík.')
 				break;
 			}
-			ui.warn('Týme ' + (inputTeamIndex+1) + ': Na poli '+printCoords(inputXCoords,inputYCoords)+' již pivo leží.')
+			if (field.addBeer(inputXCoords,inputYCoords,inputTeamIndex) == false) {
+				ui.warn('Týme ' + (inputTeamIndex+1) + ': Na poli '+printCoords(inputXCoords,inputYCoords)+' již pivo leží.')
+				break;
+			}
+
+			ui.log('Tým ' + (inputTeamIndex+1) + ' položil pivo na poli ' + printCoords(inputXCoords,inputYCoords)+'.');
+			teams[inputTeamIndex].usedBeers++;
 			break;
 
 		case '-': // remove beer from field
@@ -84,5 +89,5 @@ function executeInput() {
 }
 
 function printCoords(xCoords, yCoords) {
-	return '['+xCoords+';'+yCoords+']';
+	return '['+xCoords.toString(16)+';'+yCoords.toString(16)+']';
 }
