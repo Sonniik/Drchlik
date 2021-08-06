@@ -48,6 +48,10 @@ function executeInput() {
 	// validate and perform valid action
 	switch (commandInput.slice(-1)) {
 		case '+': // add beer to field
+			if (teams[inputTeamIndex].availableBeers <= 0) {
+				ui.warn('Týme ' + (inputTeamIndex+1) + ': Nemáte piva, která byste mohli položit.');
+				break;
+			}
 			if (inputXCoords == grandpa.xCoords && inputYCoords == grandpa.yCoords) {
 				ui.warn('Týme ' + (inputTeamIndex+1) + ': Na poli '+printCoords(inputXCoords,inputYCoords)+' stojí děda Drchlík.')
 				break;
